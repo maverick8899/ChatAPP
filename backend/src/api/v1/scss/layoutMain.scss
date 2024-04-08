@@ -1,0 +1,16 @@
+.invalid {
+    input {
+        border-color: red;
+    }
+    .form-message {
+        color: red;
+    }
+}
+.valid {
+    input {
+        border-color: rgb(22, 134, 8);
+    }
+    .form-message {
+        color: rgb(19, 127, 5);
+    }
+}

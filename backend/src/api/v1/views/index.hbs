@@ -1,0 +1,213 @@
+<div class='mx-auto col-4 background-dark mt-5'>
+    <form>
+        <div class='mb-3'>
+            <label for='email' class='form-label'>Email address</label>
+            <input
+                type='email'
+                class='form-control bg-white'
+                id='email'
+                aria-describedby='emailHelp'
+                name='email'
+                autocomplete='username'
+                required
+            />
+            <div id='emailHelp' class='form-text'>We'll never share your email with anyone else.</div>
+        </div>
+        <div class='mb-3'>
+            <label for='password' class='form-label'>Password</label>
+            <input
+                type='password'
+                class='form-control'
+                id='password'
+                name='password'
+                autocomplete='current-password'
+                required
+            />
+        </div>
+        <input type='checkbox' onclick='togglePassword()' /><p style='display: inline;'>Show
+            Password</p>
+        <br />
+        <div class='my-3'>
+            <button class='btn btn-primary' id='login'>Login</button>
+            <button class='btn btn-outline-info' id='get_lists'>Get List</button>
+        </div>
+        <a href='/register' id='emailHelp' class='btn-link' style='line-height: 20px;'>Your haven't
+            account yet ?</a>
+    </form>
+</div>
+{{!--  --}}
+<script>
+    //Timeout là thời gian tối đa mà một yêu cầu HTTP có thể chờ đợi phản hồi từ server trước khi nó bị hủy bỏ
+    const instance = axios.create({
+        baseURL: '/user', //localhost:3000/
+        timeout: 3 * 1000, //ms
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    //middleware request
+    instance.interceptors.request.use(
+        async (config) => {
+            //vì login và refreshToken sẽ tạo accessToken mới nên ko cần get
+            if (config.url.indexOf('/v1/auth/login') >= 0 || config.url.indexOf('v1/auth/refreshToken') >= 0) {
+                return config;
+            }
+
+            //nếu không phải login & refreshToken thì get_lists
+            //truyền token xuống server để verify
+            const accessToken = await instance.getLocalAccessToken();
+            if (accessToken) {
+                config.headers['authorization'] = `Bearer ${accessToken}`;
+                console.log('Before request', accessToken);
+            } else {
+                throw new Error("you haven't set accessToken yet ");
+            }
+            return config;
+        },
+        (err) => {
+            return Promise.reject(err);
+        },
+    );
+    //middleware response: thực thi sau khi phản hồi (response) từ server được trả về
+    // if accessToken expired then response {code: 401, message: 'jwt expired'}
+    // if accessToken wrong then response {code: 500, {name: 'JsonWebTokenError', message: 'invalid token'}}
+    instance.interceptors.response.use(
+        async (response) => {
+            console.log('After response', response);
+
+            const { config } = response;
+            if (config.url.indexOf('/v1/auth/login') >= 0 || config.url.indexOf('/v1/auth/refreshToken') >= 0) {
+                return response;
+            }
+            //mã thông báo lỗi được gửi về từ server thông qua getData(),
+            //lỗi gửi từ hàm verify
+            const { status, message } = response.data;
+
+            //nếu token expired thì refreshToken,(token được lưu ở headers nên không bị mất như cookie)
+            if (status && status === 401) {
+                if (message && message === 'jwt expired') {
+                    console.log('accessToken is expired : : :', message);
+
+                    //step 1: get accessToken from refreshToken
+                    const {
+                        DT: { newAccessToken },
+                        status,
+                    } = await refreshToken();
+
+                    if (status === 'success') {
+                        console.log('refreshToken is successfully');
+                        //LÀM MỚI TẤT CẢ TOKEN
+                        //step 2: gán lại dể thực hiện request mới
+                        config.headers['authorization'] = `Bearer ${newAccessToken}`;
+
+                        //step 3:Set caches
+                        //Set localStorage
+                        await instance.setLocalAccessToken(newAccessToken);
+
+                        //step 4: thực hiện lại yêu cầu HTTP bằng cách gọi instance(config) zalo
+                        return instance(config);
+                    }
+                }
+            }
+            //token invalid, trả về lỗi Promise để try catch ở btn_get
+            if (status && status === 500) {
+                return Promise.reject(message.message);
+            }
+            return response;
+        },
+        (err) => {
+            return Promise.reject(err);
+        },
+    );
+  
+    //Logic
+    const btn_login = document.getElementById('login');
+    const btn_get = document.getElementById('get_lists');
+    function togglePassword() {
+        var passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+    if (btn_login) {
+        btn_login.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value; 
+            const password = document.getElementById('password').value;
+            try{
+                    //lấy token&timeExpired vừa mới tạo ra set vào localStorage
+                    const { DT:{accessToken,refreshToken},status } =  await login( email , password );
+            
+                    if(status ==='success'){
+                        //set cache
+                        await instance.setLocalAccessToken(accessToken);
+                        
+                        //redirect
+                        window.location.href = '/user/home'; 
+                    }
+            }catch(err) {
+                    console.log({err});
+            }
+        });
+    }
+    if (btn_get) {
+        btn_get.addEventListener('click', async (e) => {
+            e.preventDefault();
+            try{
+                    const {list}= await getData();
+                    console.table('data',list)
+            }catch(error) {
+                console.log({error});
+            }
+        })
+    }   
+    const generateSign = () => {
+        const sortKeys = [] ;
+        const params = {} ;
+
+        params.v = 'v1';// đổi version thì api cũng không hợp lệ
+        params.timestamp = Date.now();
+        params.nonce = Math.floor( (Math.random() + Math.floor( Math.random()*9 + 1)) * Math.pow(10,20-1));
+        params.keyToken = '6a5a12c80d25d207c791d756a3c134a2335beeec03a0bb2dad01fee057e2a47b';
+        
+        for( const key in params){
+            //{userData: 'xxx',sign:'xxxx'}
+            key !== 'sign' && sortKeys.push(`${key}:${params[key]}`);//[sign:'xxxx']
+        }
+        
+        let paramsHolder = sortKeys.sort().join("");////hiểu là giữ params
+        params.sign = `${ md5( paramsHolder ) }`;
+
+        return `?${new URLSearchParams(params)}`; //convert params to key=value&key1=value => JS_zalo
+    }
+    
+    //Fetch API
+    async function login(email, password) {
+        return (await instance.post(`/v1/auth/login${generateSign()}`, { email, password })).data;
+    }
+    async function getData() {
+        return (await instance.get(`/v1/auth/data${generateSign()}`)).data;
+    }
+    async function refreshToken() {
+        return (await instance.get(`/v1/auth/refreshToken${generateSign()}` )).data;
+    }
+    //localStorage, lưu kiểu JSON sẽ dễ xử lý
+    instance.setLocalAccessToken =  (token)=>{
+        window.localStorage.setItem('accessToken',token)   
+    }
+    instance.getLocalAccessToken =  () =>{
+       return window.localStorage.getItem('accessToken')   
+    }
+</script>
+
+{{!-- /*
+middleware request chạy hai lần vì gọi axios hai lần, getData & refreshToken
+
+//req & res dùng chung config
+config trong response của ExpressJS là một cách để server và client giao tiếp với nhau thông qua giao thức HTTP. Khi client gửi một yêu cầu HTTP đến server, server sẽ xử lý yêu cầu và trả về một phản hồi HTTP cho client.
+Phản hồi HTTP từ server đến client bao gồm nhiều thông tin, bao gồm mã trạng thái HTTP, tiêu đề và dữ liệu phản hồi. config trong response được sử dụng để cấu hình các tùy chọn cho phản hồi HTTP được trả về từ server đến client.
+Việc sử dụng config trong response cho phép server gửi các thông tin cần thiết cho client để client có thể hiểu được phản hồi trả về. Ví dụ, tiêu đề Content-Type được sử dụng để xác định định dạng của dữ liệu phản hồi (ví dụ: văn bản, JSON, XML, hình ảnh,...), để client biết cách xử lý phản hồi đó.
+*/ --}}

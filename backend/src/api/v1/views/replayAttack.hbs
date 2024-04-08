@@ -1,0 +1,55 @@
+<div style="width: 500;height: 500; margin: auto; padding-top: 100;">
+    <button class="btn btn-primary" id="btn">Button</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js" integrity="sha512-8pbzenDolL1l5OPSsoURCx9TEdMFTaeFipASVrMYKhuYtly+k3tcsQYliOEKTmuB1t7yuzAiVo+yd7SJz+ijFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+    const api='http://localhost:3000/testAPI-Replay_Attack';
+    const btn=document.getElementById('btn');
+    const getNonce= num => {
+        return Math.floor( (Math.random() + Math.floor( Math.random()*9 + 1)) * Math.pow(10,num-1) );
+    }
+    //paramsHolder to encrypt,(use the same key (key_public) for encryption)
+    const generateSign = (params) => {
+
+        const keyToken ='key_public';
+        const timestamp = Date.now();
+        const nonce = getNonce(20);
+        const sortKeys = [] ;
+
+        params.timestamp = timestamp;
+        params.nonce = nonce;
+        params.keyToken = keyToken;
+        params.v = 'v1';// đổi version thì api cũng không hợp lệ
+        
+        for( const key in params){
+            //{userData: 'xxx',sign:'xxxx'}
+            key !== 'sign' && sortKeys.push(`${key}:${params[key]}`);//[sign]
+        }
+        
+        console.log(sortKeys);
+        //hiểu là giữ params
+        let paramsHolder = sortKeys.sort().join("");//userDataxxx
+        params.sign = `${ md5( paramsHolder ) }`;
+        
+        console.log(params);// params { timestamp, nonce, keyToken, v, sign}
+
+        return `?${new URLSearchParams(params)}`; //convert params to key=value&key1=value => JS_zalo
+    }
+
+    btn.addEventListener('click',async()=>{
+        console.log(await((await fetch( api + generateSign({ userData:'email' }) ))).json())
+    })
+
+</script>
+{{!-- 
+{
+    keyToken: "key_secret"
+    nonce: 79569191363441700000
+    sign: "f13012a5890a37b990ecabd4a8b53daa"
+    timestamp: 168250877668
+    userData: "email"
+    v: "v1"
+}
+ --}}

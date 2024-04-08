@@ -1,0 +1,11 @@
+.invalid input {
+  border-color: red; }
+
+.invalid .form-message {
+  color: red; }
+
+.valid input {
+  border-color: #47ff2f; }
+
+.valid .form-message {
+  color: #47ff2f; }

@@ -1,0 +1,250 @@
+<form >
+    <div class='ms-5 mt-3'>
+        <div class="form-group">
+            <label for='email' class='form-label'>Email address</label>
+            <input
+                type='email'
+                class='form-control border-2'
+                id='email'
+                aria-describedby='emailHelp'
+                name='email'
+                placeholder='Ex: email@domain.com'
+                rules='require|email'
+                autocomplete="off"
+                
+            />
+            <span class='form-message' style="font-style: italic;font-size: smaller;">
+                We'll never share your email with anyone else.</span>
+        </div>
+        <div class="form-group">
+            <label for='password' class='form-label'>Password</label>
+            <input
+                type='password'
+                id='password'
+                class='form-control border-2'
+                aria-labelledby='passwordHelpBlock'
+                autocomplete='off'
+                placeholder='Ex: abc123'
+                name='password'
+                rules='require|min:6|max:30'
+                
+            />
+            <span class='form-message' style="font-style: italic;font-size: smaller;">
+                 Your password must be 6-30 characters long, contain letters and numbers. </span>
+        </div>
+        <div class="form-group">
+            <label for='verifyPassword' class='form-label'>Verify Password</label>
+            <input
+                type='password'
+                id='verifyPassword'
+                class='form-control border-2'
+                aria-labelledby='passwordHelpBlock'
+                placeholder='Ex: abc123'
+                autocomplete='off'
+                name='verifyPassword'
+                rules='require|verifyPassword'
+                
+            />
+            <p class='form-message' style="font-style: italic;font-size: smaller;">
+                Password must be match</p>
+        </div>
+
+        <input type='checkbox' onclick='togglePassword()' /><p style='display: inline;'>
+            Show Password</p>
+        <br />
+        <div class='my-2 d-flex justify-content-center'>
+            <button class='btn btn-primary'id='sign_up'>Sign Up</button>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href='/'>You already have an account.</a>
+        </div>
+    </div>
+</form>
+{{!-- /////////////////////////////////////////////////////// --}}
+<script>
+    const inputPassword = document.getElementById("password");
+    const verifyPasswordInput = document.getElementById("verifyPassword");
+    function togglePassword() {
+
+        if (inputPassword.type === "password") {
+            inputPassword.type = "text";
+            verifyPasswordInput.type = "text";
+        } else {
+            inputPassword.type = "password";
+            verifyPasswordInput.type = "password";
+        }
+    }
+
+   //Validator
+    function getParent(element, selector) {
+        while (element.parentElement) {
+            if (element.parentElement.matches(selector)) {
+                return element.parentElement;
+            }
+            element = element.parentElement;
+        }
+    }
+    const formRules = {}; //mỗi key là một mảng chứa các hàm validate
+    const validatorRules = {
+        require: function (value) {
+            return value ?  undefined  :  'Enter this field, please!'
+        },
+        email: function (value) {
+            const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            return regex.test(value) ?  undefined  :  'Email is invalid'
+        },
+        min: function (min) {
+            return function (value) {
+                return value.length >= min
+                    ?  undefined
+                    :  `Enter least ${min} characters, please!`
+            };
+        },
+        max: function (max) {
+            return function (value) {
+                return value.length <= max
+                    ?  undefined
+                    :  `Password least ${max} characters, please!`
+            };
+        },
+        verifyPassword: function (password) {
+            return function (verifyPassword) {
+                console.log({ password, verifyPassword });
+                return password === verifyPassword
+                    ?  undefined
+                    :  "Password isn't Match"
+            };
+        },
+    };
+
+    (function Validator() {
+        const formElement = document.querySelector('form');
+
+        if (formElement) {
+            const inputs = document.querySelectorAll('input[rules]');
+
+            for (const input of inputs) {
+                const rules = input.getAttribute('rules').split('|'); // [require,...]
+
+                for (let rule of rules) {
+                    let ruleFunc;
+                    if (rule.includes(':')) {
+                        ruleInfo = rule.split(':');
+                        ruleFunc = validatorRules[ruleInfo[0]](ruleInfo[1]); //min(6)
+                    } else {
+                        ruleFunc = validatorRules[rule];
+                    }
+
+                    //nếu đã có key input.name trong formRules và là Array
+                    if (Array.isArray(formRules[input.name])) {
+                        formRules[input.name].push(ruleFunc);
+                    } else {
+                        //Kiểm tra nếu chưa có key input.name trong formRules
+                        formRules[input.name] = [ruleFunc];
+                    }
+                }
+
+                //Bắt sự kiện để validate 
+                input.onblur = handleValidator;
+                input.onfocus = handleOnFocus;
+                input.oninput = handleOnInput;
+
+                //function handle 
+                function handleValidator(event) {
+                    let nameInput;
+                    //rules là các hàm trong mảng thuộc kry đó
+                    let rules = formRules[event.target.name];
+                    //if use in onsubmit then nameInput = event.target.name
+                    //otherwise nameInput default is 'email' cause it use in for inputs
+                    if (event.type === 'submit') {
+                        nameInput = event.target.name;
+                    } else {
+                        nameInput = input.name;
+                    }
+                    console.log({ rules });
+
+                    //duyệt qua từng rule trong key của formRules tương ứng với từng input
+                    //nếu có errMessage thì kết thúc, some every trả về boolean
+                    let errMessage = null;
+                    rules.some(function (rule, index) {
+                        if (nameInput === 'verifyPassword' && index === 1) {
+                            const passwordFunc = rule(inputPassword.value);
+                            errMessage = passwordFunc(event.target.value);
+                        } else {
+                            errMessage = rule(event.target.value);
+                        }
+                        return errMessage; //Attend: object !== false
+                    });
+                    console.log(errMessage);
+                    let formGroup = getParent(event.target, '.form-group');
+                    let formMessage = formGroup.querySelector('.form-message');
+
+                    if (errMessage) {
+                        if (formGroup) {
+                            if (formGroup.classList.contains('valid')) {
+                                formGroup.classList.remove('valid');
+                            }
+                            formGroup.classList.add('invalid');
+                            if (formMessage) {
+                                formMessage.innerText = errMessage;
+                            }
+                        }
+                    } else {
+                        formGroup.classList.add('valid');
+                        formMessage.innerText = 'Valid';
+                    }
+                    return errMessage;
+                }
+                function handleOnFocus(event) {
+                    let formGroup = getParent(event.target, '.form-group');
+                    if (formGroup.classList.contains('invalid')) {
+                        formGroup.classList.remove('invalid');
+                    }
+                }
+                function handleOnInput(event) {
+                    let formGroup = getParent(event.target, '.form-group');
+                    let input = formGroup.querySelector('input');
+                    if (formGroup) {
+                        let formMessage = formGroup.querySelector('.form-message');
+                        if (formMessage && input.name === 'email') {
+                            formMessage.innerText = "We'll never share your email with anyone else.";
+                        } else if (formMessage && input.name === 'password') {
+                            formMessage.innerText =
+                                'Your password must be 6-30 characters long, contain letters and numbers. ';
+                        } else if (formMessage && input.name === 'verifyPassword') {
+                            formMessage.innerText = 'Password must be match';
+                        }
+                    }
+                }
+            }
+            //handle submit
+            formElement.onsubmit = async function (event) {
+                event.preventDefault();
+
+                let errMessage;
+                const inputs = document.querySelectorAll('input[rules]');
+                for (const input of inputs) {
+                    errMessage = handleValidator({ target: input, type: 'submit' });
+                }
+
+                //Call API
+                const email = $('#email').val();
+                const password = $('#password').val();
+                if (!errMessage) {
+                    const { status, elements } = (
+                        await axios.post('http://localhost:3000/user/register', { email, password })).data;
+                    if (status === 'success') {
+                        console.log(elements);
+                    }
+                }
+            };
+            console.log({ formRules });
+        }
+    })();
+
+
+
+
+
+
+</script>

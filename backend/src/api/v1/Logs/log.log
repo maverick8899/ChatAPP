@@ -1,0 +1,189 @@
+03-08-2023 | 15:27:38 - id: fdf17a83-f4f9-44eb-8f35-1e37209aa83e - /api/v1/auth/logout - POST - Unauthorized
+03-08-2023 | 16:46:47 - id: 09ea1ba1-b351-4c53-a622-e7bb9cc2ab0a - /api/v1/chat - GET - jwt malformed
+03-08-2023 | 19:55:49 - id: 37e2d6b5-80fa-4540-bdeb-a02102ccdc20 - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:00:38 - id: e7c6e01f-f143-4bcc-8ad1-0fff58492605 - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:01:14 - id: 064e7c4e-9b29-4c70-bb14-acb6e1d0da4a - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:03:31 - id: 2dc0b73a-c1a8-402f-b4e6-50eb951a5bc7 - /api/v1/chat/group_rename - PUT - groupAdmin is not defined
+03-08-2023 | 20:03:59 - id: 32be43d8-ed76-4027-88f2-97bb99141d31 - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:05:11 - id: ecf6bd7a-aa26-41ae-ab90-e7df3662b0d8 - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:07:56 - id: 9d643add-1ed7-4722-994d-4eb0962b8d6a - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:09:04 - id: f57e25a8-42bd-4d87-8a2e-fc8660172e12 - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:09:30 - id: fd27bc73-ed4b-4b50-a412-c4e30aa511a3 - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:10:03 - id: d8368b5b-fc67-4888-8c97-ba2c26ea1a6c - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:11:02 - id: 797a4c64-154f-46ff-b911-5e8495d0bbcf - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:12:01 - id: 7f7c4dac-1c05-41be-b61e-96cd638032fc - /api/v1/chat/group_rename - PUT - Cannot read properties of undefined (reading '_id')
+03-08-2023 | 20:13:34 - id: 8e15ea3c-016d-4530-ba02-6b3a344af97e - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:14:28 - id: 26f5f53f-5f5e-4f40-8e75-185fff691836 - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:15:17 - id: 8ec1bb25-f7d4-4815-8c64-fa2ad8203695 - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 20:16:34 - id: 3796a15a-12b8-49b4-8fc1-5bd64de246de - /api/v1/chat/group_rename - PUT - Permission Denied
+03-08-2023 | 21:45:29 - id: 70edfa60-bab4-4642-83b2-409b7a9f65ad - /api/v1/chat - GET - jwt malformed
+03-08-2023 | 22:16:43 - id: 3b317da1-1233-48a9-9c03-04867e2e5b96 - /api/v1/chat - GET - jwt malformed
+04-08-2023 | 16:14:31 - id: eb030b48-77be-4931-8892-185718387dc1 - /api/v1/auth/login - POST - Unauthorized
+04-08-2023 | 16:16:05 - id: 2854d7e4-1e55-4708-ba6a-d44d71f20695 - /api/v1/chat/group_rename - PUT - jwt expired
+04-08-2023 | 16:53:14 - id: ca04607d-f052-4d73-964d-4f6898246f08 - /api/v1/message - POST - Message.create(...).populate is not a function
+04-08-2023 | 16:53:27 - id: 8088a22e-ff2d-49ea-a9a1-492655a5e320 - /api/v1/message - POST - Message.create(...).populate is not a function
+04-08-2023 | 16:55:02 - id: b90c1e20-9583-42f4-b050-4bf21a395c89 - /api/v1/message - POST - Message.create(...).populate is not a function
+04-08-2023 | 16:55:05 - id: 7e8b087e-cded-48c1-8681-6e5c202ab785 - /api/v1/message - POST - Message.create(...).populate is not a function
+04-08-2023 | 16:56:16 - id: 0dddc254-77f2-45b4-9eb1-1887568f769f - /api/v1/message - POST - Message.create(...).populate is not a function
+04-08-2023 | 18:16:49 - id: 3caf931a-dfe3-4608-b0e0-cda50f62cb36 - /api/v1/chat - GET - jwt malformed
+04-08-2023 | 18:16:49 - id: da1b5362-8e9f-451f-8f6a-80c9289bf931 - /api/v1/message/649c3976f9318a67a1fadd17 - GET - jwt malformed
+04-08-2023 | 18:17:21 - id: a1995f37-ab45-4ec7-91fa-eaca96762697 - /api/v1/chat - GET - jwt malformed
+04-08-2023 | 18:17:21 - id: cf2508f8-d34f-4ab7-8090-78a5991ee094 - /api/v1/message/649c3976f9318a67a1fadd17 - GET - jwt malformed
+04-08-2023 | 18:19:20 - id: 333d7cda-a7a1-4f00-943e-5358f03e5c42 - /api/v1/message - POST - Message.create(...).populate is not a function
+04-08-2023 | 18:19:45 - id: 3115e7d3-414e-4835-93e2-1d512274fd0b - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 18:55:04 - id: a19f233e-f42a-4fe0-a829-79dcb575bb65 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 18:57:54 - id: 054986f9-1598-4cdc-8f0a-44b6eca65b12 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 18:59:02 - id: 861a3f96-02b6-4ac8-8d2c-c2daaf5b64cc - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 18:59:35 - id: 69c07ff4-3052-4349-bf39-d4efb71704d6 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:00:37 - id: 9749e403-a9ed-422a-aae7-c46d53ad51ce - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:01:19 - id: 17bbdd11-1c92-4944-831d-e444c6b4f561 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:06:37 - id: 38a73422-5448-4a97-a956-148907872519 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:27:52 - id: 229d0117-bedd-497a-b723-809264f210de - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:29:10 - id: 1f026ed9-0cf5-466e-8888-ae6e49deb77e - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:30:16 - id: c11941f6-fdc7-42fa-a7c4-4dab34bdff63 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:33:46 - id: 5cfb273b-2736-4a10-9de6-e71dbe084f2e - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:36:56 - id: f0a649ea-3f10-4be6-a6e1-ae737395a4e1 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:46:48 - id: fe2993a3-aad7-491f-a63a-7294fb992353 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:47:30 - id: 6f1c91ac-12f1-4242-abd2-695bc8d97ca2 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:48:30 - id: 769137a1-e472-4787-9200-4e2e63e0cbc8 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:49:14 - id: e7ce916c-94b9-4ade-949a-d1b6e57c97de - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:49:54 - id: 6111ffca-1c2e-484e-8dc2-c71fb5bf3203 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:50:27 - id: d2c1433a-6c21-47c1-b0ef-f529bb807ccb - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:53:00 - id: 4314801a-0313-4523-a484-5308178fa2c8 - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:55:21 - id: 4a09a54b-fedd-41f3-8d98-0370dc095abb - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:56:28 - id: d50db4b4-efba-4097-b5dc-1af12f223ebf - /api/v1/message - POST - Message.create(...).populate is not a function
+05-08-2023 | 19:58:53 - id: e3b3ae16-1884-47fe-8626-ee6bed6ba8f6 - /api/v1/message - POST - message.populate(...).execPopulate is not a function
+05-08-2023 | 20:01:56 - id: 3a71fc9a-26fe-41df-a05c-65ce7d9a9dec - /api/v1/auth/logout - POST - Unauthorized
+05-08-2023 | 20:02:01 - id: 2e23efe5-22fb-42bf-8fb7-1e58bcfda353 - /api/v1/auth/login - POST - Unauthorized
+05-08-2023 | 20:02:10 - id: 35a84571-dc4c-480d-93ef-f45cc40eab3c - /api/v1/auth/login - POST - Unauthorized
+05-08-2023 | 20:23:51 - id: db157fe7-ea84-48e3-b75d-70164aef2274 - /api/v1/auth/logout - POST - Unauthorized
+05-08-2023 | 20:42:48 - id: bcf4d8fa-380b-4150-a90a-784869f9787e - /api/v1/auth/login - POST - Unauthorized
+05-08-2023 | 20:43:15 - id: a0b47ce6-e15f-463c-91e2-f869b0231856 - /api/v1/auth/login - POST - Unauthorized
+05-08-2023 | 20:43:50 - id: 0230b254-afa4-425a-b1be-f5fcab9ba2b1 - /api/v1/auth/logout - POST - Unauthorized
+05-08-2023 | 20:43:59 - id: 6cf03271-7988-403b-a3d4-30ae0e9e0956 - /api/v1/auth/login - POST - Unauthorized
+05-08-2023 | 20:44:12 - id: efb714ff-f739-4d45-8edd-9eee9af4fac9 - /api/v1/auth/login - POST - Unauthorized
+05-08-2023 | 21:37:39 - id: 52cef907-3ba5-4f12-b191-678c95aa5981 - /api/v1/message/649c3979f9318a67a1fadd18 - GET - jwt malformed
+05-08-2023 | 21:40:23 - id: 3e22d195-06ae-481e-8b23-f50671d3a371 - /api/v1/chat - GET - jwt malformed
+05-08-2023 | 21:40:23 - id: a878e154-132e-4937-bb72-bbe2d9ab0aab - /api/v1/message/649c3979f9318a67a1fadd18 - GET - jwt malformed
+05-08-2023 | 22:40:44 - id: 61ce6bac-9fe7-4a86-87e8-0a9596c38487 - /api/v1/message/649c3979f9318a67a1fadd18 - GET - jwt malformed
+05-08-2023 | 22:40:53 - id: ada9dacb-d492-44c8-9cb7-6e984e21fd7e - /api/v1/chat - GET - jwt malformed
+05-08-2023 | 22:40:53 - id: f2163f02-c3f9-4a71-ad8d-e651814268b2 - /api/v1/message/649c3979f9318a67a1fadd18 - GET - jwt malformed
+07-08-2023 | 09:42:05 - id: 13489323-ea84-45ea-be07-19efd51de24f - /api/v1/auth/logout - POST - Unauthorized
+07-08-2023 | 09:42:07 - id: 9b86f3ff-0889-42a9-8539-9cac1c4ce099 - /api/v1/auth/logout - POST - Unauthorized
+07-08-2023 | 09:44:27 - id: 316fbeec-8ec3-4bdb-a800-7e8125781aec - /api/v1/auth/logout - POST - Unauthorized
+07-08-2023 | 09:49:18 - id: 65ca28e1-3b32-4b55-9d66-3e8adaa41071 - /api/v1/auth/logout - POST - Unauthorized
+05-04-2024 | 21:57:34 - id: 9cc2aff9-2453-47ed-8913-ddf5e82b9541 - /api/v1/chat - GET - jwt malformed
+05-04-2024 | 21:57:34 - id: ed7a96fb-fb8e-441b-88fa-0dd44323f707 - /api/v1/message/649c3979f9318a67a1fadd18 - GET - jwt malformed
+06-04-2024 | 21:03:52 - id: 871eb004-908f-4123-8170-8c52049c5a4c - /api/v1/auth/register - POST - trankimbang0809@gmail.com already exists
+07-04-2024 | 09:27:49 - id: e34c5d49-57e7-4262-b6ee-f1d4b89b12be - /api/v1/auth/register - POST - 2151050035bang@ou.edu.vn already exists
+07-04-2024 | 09:29:29 - id: 9ac90d67-9b53-4ed1-940a-68adaa04fb21 - /api/v1/auth/register - POST - 2151050035bang@ou.edu.vn already exists
+07-04-2024 | 09:34:28 - id: 3443905b-a4d8-4238-b112-10206a73d86e - /api/v1/auth/register - POST - 2151050035bang@ou.edu.vn already exists
+07-04-2024 | 09:34:54 - id: ea19d74e-c363-4545-82a0-31d9e18021b4 - /api/v1/auth/register - POST - 2151050035bang@ou.edu.vn already exists
+07-04-2024 | 09:53:58 - id: 017426db-5eb5-4f36-ab5e-186c0779abb4 - /api/v1/auth/verifyOTP - POST - OTP is invalid.
+07-04-2024 | 10:32:41 - id: b2e207ec-b450-4bc1-8d14-be6576822066 - /api/v1/auth/register - POST - command find requires authentication
+07-04-2024 | 10:34:21 - id: 860b6cc3-0f2a-4132-a29e-4d186df26070 - /api/v1/auth/login - POST - command find requires authentication
+07-04-2024 | 10:39:09 - id: a53ccdf7-ff0b-4563-8baa-fb88d762c7fa - /api/v1/auth/register - POST - command find requires authentication
+07-04-2024 | 13:23:02 - id: 2e507afd-f79c-4a14-87d5-5e27c7255987 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 13:25:28 - id: 15ffcc79-af07-43de-b03d-8b58dc395b04 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 13:25:59 - id: 38810d5f-8a0b-46b7-a4ec-679840b5486d - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 13:29:27 - id: 23e887b6-b728-47d4-ad20-c550375ed764 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:04:18 - id: da88702d-4d7d-4f50-9ed3-61223a619de8 - / - GET - This page does not exist
+07-04-2024 | 14:04:18 - id: 89ef6655-6a97-4daa-96da-74953bb45330 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:04:36 - id: 6f46299f-ade4-4948-bb74-c2fc4cee8f3e - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:04:36 - id: 63134629-19a8-47cf-b0d9-9d003ea0a47b - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:04:51 - id: 8699f8f6-8507-425f-8516-a7a317a289f5 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:04:51 - id: e7c90c54-760d-4bdf-9290-5b9f8e14c7c3 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:04:52 - id: 061e5db9-6337-4aaa-9afa-200348a66036 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:04:52 - id: 6da2cc5b-c45e-4eab-b4c9-90761646c93b - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:04:52 - id: 262a056a-cf41-4e83-8014-a4876e051a2d - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:04:52 - id: 1e6b661f-4f40-416b-a398-9c574186c38f - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:04:52 - id: 381d5d3b-c7ec-4870-b8e6-2933fc88b557 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:04:52 - id: 2517ce90-be08-4cb5-8dfd-28a83fba45c1 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:04:53 - id: 9235d3fe-36fd-4c7b-bc78-56899a7d83b9 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:04:53 - id: 14951ffd-2c28-487f-931b-2010dbf87191 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:05:38 - id: ae8b4b8e-3d21-40db-b229-e91350475b04 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:05:38 - id: 89518a5d-beae-4ea8-b4b4-54f3d47d0524 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:05:40 - id: ec32a451-8ad8-41c3-a55d-7a8443f31338 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:05:40 - id: 4ad45077-d1e2-4875-b282-21e658f32c69 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:05:41 - id: 00adc704-328e-4d71-8ef4-071b3440ea96 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:05:41 - id: 505b3df1-b0b8-4d2b-ace1-b22c792a61d4 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:05:42 - id: bc1e2e9c-f9a2-4092-92e3-a76667136e8f - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:05:42 - id: 6e7621ee-b44b-4bfa-bb3b-3c37251981fc - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:06:17 - id: 9135a2e4-8ea5-4dbb-bf82-1022320c784b - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:06:17 - id: 2d552b17-8904-48db-9b47-aab05e0f0bbe - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:06:18 - id: 1b956c6f-4f1d-4956-b8b6-4deded4c6196 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:06:18 - id: f071cb60-8709-479d-94a8-8368880817df - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:06:18 - id: 43fc0217-7763-480c-926e-8dc9997f0016 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:06:18 - id: e833cce2-eddc-45c7-85dd-bd1dcf8ab831 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:06:18 - id: e3aa4e5a-d62e-48f2-ac85-57ce156fe30b - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:07:54 - id: 4ba75d43-5797-4b41-ac67-f4ea259ab660 - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:07:54 - id: 86e51617-9cb7-4b00-9c8f-5d32f6d69083 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:07:55 - id: d24e89c8-8bbc-417c-bd83-9b4219fac04b - /api/v1/auth/register - GET - This page does not exist
+07-04-2024 | 14:07:55 - id: b5a5b058-9d29-436a-a916-907c2f387e1f - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:11:07 - id: 9365e570-d6ab-4bde-94b2-504978ede745 - /css/layoutMain.css - GET - This page does not exist
+07-04-2024 | 14:11:08 - id: cfe4ecba-db82-49a9-b306-fd2ba8bc33dd - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:11:14 - id: 397a9dc1-be51-4672-8d51-34b749192a64 - /api/v1/auth/test - GET - res.json is not a function
+07-04-2024 | 14:11:15 - id: 13191fc2-6bac-491f-971c-ec9cd2dee242 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:12:07 - id: c714e21b-34f7-4de5-8f97-0b2d67383071 - /api/v1/auth/test - GET - res.json is not a function
+07-04-2024 | 14:12:07 - id: 21d9d918-9da1-41ba-ae1f-daa59d992642 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:12:08 - id: dd882f52-de5f-4cca-927b-dd0b8bfaa4ec - /api/v1/auth/test - GET - res.json is not a function
+07-04-2024 | 14:12:08 - id: 6bda6a53-abaf-48c6-b500-700779088312 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:12:08 - id: 29224f4d-3506-4e32-910b-22a91581e894 - /api/v1/auth/test - GET - res.json is not a function
+07-04-2024 | 14:12:08 - id: e20d35c4-a0d9-4a0a-9adc-1280526dde5f - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:14:18 - id: 2b50fbb9-d213-4197-879f-aeac3cae6c95 - /api/v1/auth/test - GET - res.json is not a function
+07-04-2024 | 14:14:18 - id: fdf64f5a-8b3c-41f4-84e0-089091bfe46e - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:16:07 - id: 55149d83-6e98-4963-9530-1502ec86b21c - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:16:11 - id: dc4c94eb-d830-416f-8135-85aad174ce45 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:16:54 - id: 097ba92c-24e5-4e62-ae93-4542609975ac - /api/v1/auth/test - GET - res.json is not a function
+07-04-2024 | 14:16:54 - id: 44638263-3762-47e5-b3bc-2928807bd5b6 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:17:35 - id: 303d51e8-1217-4f39-bdf7-4cebd18a600b - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:34:18 - id: 8ee46482-6387-47e2-a7fa-0b71771e8719 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:34:46 - id: 93e51367-a280-406d-a2a4-61121b37bc92 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:36:08 - id: 2f05c289-d305-40be-8f38-66ce15d5a7b0 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:40:58 - id: 32da4fae-7965-4342-a78b-bd7a87e1f7ba - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:41:18 - id: d4a1a46c-e858-44e1-b282-f38221cf7d04 - /apiv1/auth/login - POST - This page does not exist
+07-04-2024 | 14:43:03 - id: 376bc71b-92f9-4d13-8c20-d7f27cc291f6 - /api/v1/auth/login - GET - This page does not exist
+07-04-2024 | 14:43:04 - id: e01a4ba3-633c-4d85-a30d-5b54057a8019 - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:43:44 - id: 76caabf4-fac5-4921-ab8c-74bcffdd4dab - /api/v1/auth/login - POST - This page does not exist
+07-04-2024 | 14:48:41 - id: a30b206d-5fad-458c-aa6b-bad5f53e10ec - /api/v1/auth/login - GET - This page does not exist
+07-04-2024 | 14:48:41 - id: 57238151-4f70-49bf-9d99-3e1510eff15a - /favicon.ico - GET - This page does not exist
+07-04-2024 | 14:52:40 - id: a5653a4c-4e4c-4a2b-b93e-a8090cc7f5f8 - /api/v1/auth/login - POST - "email" is required
+07-04-2024 | 14:53:18 - id: 14a8d828-d4a0-4af7-a56e-e6b0a649bb93 - /api/v1/auth/login - POST - command find requires authentication
+07-04-2024 | 14:53:47 - id: 9fa50486-caa7-425d-91b3-6f5240cf4c2e - /apiv1/auth/login - POST - This page does not exist
+07-04-2024 | 14:54:11 - id: 81b4dd69-1ced-4895-88ad-6e23fb81b203 - /apiv1/auth/login - POST - This page does not exist
+07-04-2024 | 14:55:37 - id: 8b92acad-85cd-457f-a8f7-73b457825813 - /apiv1/auth/login - POST - This page does not exist
+07-04-2024 | 14:56:00 - id: 97929c91-1a5a-4b7c-ae36-b7d5868fd601 - /apiv1/auth/login - POST - This page does not exist
+07-04-2024 | 14:57:47 - id: 31334c8e-6cd6-4931-8ee5-04bd99c93288 - /apiv1/auth/login - POST - This page does not exist
+07-04-2024 | 14:58:07 - id: 91abe3ba-87de-4f60-9869-2b7935c493c5 - /apiv1/auth/test - GET - This page does not exist
+07-04-2024 | 14:58:33 - id: 514b55d1-1d83-4c34-876d-30bf5996c8db - /favicon.ico - GET - This page does not exist
+07-04-2024 | 15:01:47 - id: 232a0e3d-0e6e-4164-8596-5967740d1d6f - /apiv1/auth/test - GET - This page does not exist
+07-04-2024 | 15:07:15 - id: a0c409a9-1f35-4e75-a27a-4126dea5deb2 - /v1/auth/test - GET - This page does not exist
+07-04-2024 | 15:22:39 - id: c1f4cb4d-9bba-43b0-b995-b7993ec6404e - /v1/auth/test - GET - This page does not exist
+07-04-2024 | 15:26:46 - id: 7564f2b3-fcde-46b3-9809-4e4fda26eadb - /api/v1/auth/login - POST - command find requires authentication
+07-04-2024 | 15:27:33 - id: 12c173ca-dca8-4b06-9780-1881decb5111 - /api/v1/auth/login - GET - This page does not exist
+08-04-2024 | 00:59:02 - id: ab0c2e5c-9fa1-405e-b3ea-f81c503235fb - /api/v1/auth/login - POST - command find requires authentication
+08-04-2024 | 01:08:06 - id: db1fc786-28f8-4b06-9685-34f56feac5ec - /api/v1/auth/login - POST - command find requires authentication
+08-04-2024 | 01:08:27 - id: 4a76cab8-ac85-4655-bef5-cf9a10458ebf - /api/v1/auth/login - POST - command find requires authentication
+08-04-2024 | 01:12:25 - id: 020e099b-220e-4415-83f3-e22580681fc2 - /api/v1/auth/login - POST - command find requires authentication
+08-04-2024 | 01:18:29 - id: 6c8a2014-a3aa-4e33-be83-737c8609968f - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 01:23:40 - id: e6973648-00eb-4405-9395-12759cab25f9 - /api/v1/auth/logout - POST - Bad Request
+08-04-2024 | 01:25:40 - id: bbf37f85-78c8-4382-97ad-1b2f4cb48ab5 - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 01:26:36 - id: a88f2dfa-e274-440e-9a1b-7a0f6e322375 - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 01:45:55 - id: 4c85b740-6c98-46ad-9101-f2aeabd68140 - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 01:47:19 - id: 860a1ef6-cffd-4745-bd24-1755df3291de - /api/v1/auth/logout - POST - Bad Request
+08-04-2024 | 01:47:30 - id: 2a8512f0-7024-4fe9-914b-b309d83d19f1 - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 01:47:37 - id: 5a242720-f3d4-498d-84de-ad61defcb6aa - /favicon.ico - GET - This page does not exist
+08-04-2024 | 01:50:03 - id: 13bb7f78-6fac-49f2-a41a-0ba7bc498ecf - /api/v1/auth/logout - POST - Bad Request
+08-04-2024 | 01:50:12 - id: 7a87a647-2712-4044-af0c-878700f8dd9a - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 01:53:40 - id: e1ac0d1d-dc0d-4f0b-aa38-174f856049f9 - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 01:55:28 - id: 610cf3f6-498a-4192-b2fe-24f34418a60c - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 01:57:00 - id: 632c5d70-1079-4563-b6c2-d57151c899a9 - /api/v1/auth/logout - POST - Bad Request
+08-04-2024 | 01:57:13 - id: 7d0e4475-a111-4724-ac77-943b77413ab8 - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 01:59:29 - id: 8b789bc4-1afc-4a7c-aa1b-d53e58e19d3c - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 02:05:22 - id: 7a221939-e38b-476c-8580-e9d53006cf6d - /api/v1/auth/logout - POST - Bad Request
+08-04-2024 | 02:39:45 - id: 7d473b9b-e4a0-4a2f-bf5c-1dd54150202e - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 02:40:21 - id: 02517de2-bb25-4a46-bfa4-cfb92fac02a9 - /api/v1/auth/logout - POST - Bad Request
+08-04-2024 | 02:40:24 - id: 855f70cf-fc0e-4630-8589-8cf602871c82 - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 05:18:19 - id: dbdf4af4-ccdc-48ab-9ea3-9e3c89181b96 - /api/v1/chat/search?keyword=m - GET - jwt malformed
+08-04-2024 | 05:18:49 - id: 4394be78-980e-4370-89c4-5784288cf966 - /api/v1/chat - GET - jwt malformed
+08-04-2024 | 05:18:59 - id: 1f301488-c454-42c4-81b5-a0b6966f6c37 - /api/v1/chat/search?keyword=a - GET - jwt malformed
