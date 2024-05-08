@@ -1,16 +1,17 @@
 const Redis = require('ioredis');
 const client = new Redis({
-    host: process.env.REDIS_HOST,
-    port: 6379,
-    password: process.env.REDIS_PWD
+    host: process.env.REDIS_HOST || 'localhost',
+    port: process.env.REDIS_PORT || 6379,
+    ...(process.env.REDIS_PWD && { password: process.env.REDIS_PWD }),
 });
+process.env.REDIS_PWD && console.log('process.env.REDIS_PWD ', process.env.REDIS_PWD);
 
 //* client.ping((err, pong) => {
 //     console.log(pong.red);
 // });
 
 if (client.on('connect', () => true) && client.on('ready', (err) => true)) {
-    console.log('--> Redis ::: is ::: ready '.green);
+    console.log('✨✨✨ Redis ::: is ::: ready 👋👋👋'.green);
 }
 
 client.on('error', (err) => {

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-require('dotenv').config({ path: '../../.env' });
-
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 //
 mongoose.set('strictQuery', true); //bật chế độ kiểm tra,đọc zalo mongoDB
 
@@ -12,18 +12,18 @@ function newConnection(uri) {
     });
 
     connect.on('connected', function (error) {
-        console.log(`--> mongoDB ::: Connected ::: `.green + this.name.green.bold.italic);
+        console.log(`✨✨✨ mongoDB ::: Connected ::: 👋👋👋 `.green + this.name.green.bold.italic);
     });
     connect.on('reconnected ', function (error) {
         console.log(`mongoDB ::: Reconnected  ::: ${this.name}`.green);
     });
 
     connect.on('disconnected', function (error) {
-        console.log(`mongoDB ::: DisConnected ::: ${this.name}`.yellow);
+        console.log(`😓😓😓 mongoDB ::: DisConnected ::: ${this.name}`.yellow);
     });
 
     connect.on('error', function (error) {
-        console.log(`mongoDB ::: error ::: ${JSON.stringify(error)}`.trimEnd.bold);
+        console.log(`💀💀💀 mongoDB ::: error ::: ${JSON.stringify(error)}`.trimEnd.bold);
     });
 
     return connect;

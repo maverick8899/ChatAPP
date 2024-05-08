@@ -5,7 +5,7 @@
     "main": "server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon --inspect src/server.js",
+        "start": "nodemon --inspect  src/server.js",
         "watch": "node-sass --watch src/api/v1/scss/ --output src/api/v1/public/css/"
     },
     "keywords": [],

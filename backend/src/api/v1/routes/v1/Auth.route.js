@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const authController = require('../../controllers/Auth.controller');
-const limitRequest = require('../../middleWares/limit_req.mw');
+const limitRequest = require('../../middlewares/limit_req.mw');
 
 const checkManager = authController.checkRole('manager');
 const checkAdmin = authController.checkRole('admin');
@@ -35,6 +35,7 @@ router.get(
     authController.renderByRole('manager'),
 );
 router.get('/admin', authController.checkLogin, checkAdmin, authController.renderByRole('admin'));
+
 router.get(
     '/refreshToken',
     // authController.securityAPI,
@@ -42,8 +43,8 @@ router.get(
 );
 router.get(
     '/data',
-    authController.securityAPI,
-    authController.verifyAccessToken,
+    // authController.securityAPI,
+    // authController.verifyAccessToken,
     authController.getLists,
 );
 

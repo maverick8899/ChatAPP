@@ -1,14 +1,18 @@
 const app = require('./app');
-const { PORT } = process.env;
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-const server = app.listen(PORT, function () {
-    console.log('Listening on port:'.cyan, `${PORT}`.cyan.bold);
+const server = app.listen(process.env.PORT, function () {
+    console.log('🔥🔥🔥 Listening on port:'.cyan, `${process.env.PORT}`.cyan.bold);
 });
 
-console.log('socket', process.env.ALLOWED_ORIGINS);
-//? watching log throw out in browser to add into allowedOrigins list
-// const allowedOrigins = ['http://wsl.local:3000'];
-const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
+let allowedOrigins = '*';
+if (process.env.NODE_ENV === 'staging') {
+    console.log('socket', process.env.ALLOWED_ORIGINS);
+    //? watching log throw out in browser to add into allowedOrigins list
+    // const allowedOrigins = ['http://wsl.local:3000'];
+    allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
+}
 const io = require('socket.io')(server, {
     pingTimeout: 60000, // sau 60p ko interact thì ngắt kết nối
     cors: {

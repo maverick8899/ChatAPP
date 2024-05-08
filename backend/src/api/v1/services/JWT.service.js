@@ -48,7 +48,7 @@ module.exports = {
                     //? set refreshToken into Redis, reply return Ok if not err
                     redisClient.set(
                         JSON.stringify({ userId: `${userId}` }),
-                        JSON.stringify({ RT: token }),
+                        JSON.stringify({ refreshToken: token }),
                         'EX', //* also: NX, PX, EXAT, PXAT
                         365 * 24 * 60 * 60,
                         (err, reply) => {
@@ -64,27 +64,29 @@ module.exports = {
     },
 
     //* receive refreshToken before (generated from api login)
-    //? compare RT from client to server, if valid go ahead else throw exception
+    //? compare refreshToken from client to server, if valid go ahead else throw exception
     verifyRefreshToken: (refreshToken) => {
         return new Promise((resolve, reject) => {
             JWT.verify(refreshToken, process.env.REFRESH_TOKEN, (err, decode) => {
                 err && reject(err);
 
+                console.log('decode.userId', decode.userId);
                 //* get dữ liệu từ redis
-                redisClient.get(decode.userId, (err, reply) => {
+                redisClient.get(JSON.stringify({ userId: `${decode.userId}` }), (err, reply) => {
+                    const refreshToken_Redis = JSON.parse(reply).refreshToken;
                     //* reply return value compatible with userId in Redis
                     console.log('jwt_service.verifyRefreshToken', {
                         refreshToken_Login: refreshToken,
-                        refreshToken_Redis: reply,
+                        refreshToken_Redis,
                     });
 
                     //* check err
                     err && reject(CreateError.InternalServerError());
 
                     //* kiểm tra RF truyền vào phải bằng với RF được tạo ra ở API login thì mới trả về decode
-                    return refreshToken === reply
+                    return refreshToken === refreshToken_Redis
                         ? resolve(decode)
-                        : reject(CreateError.Unauthorized("refreshToken is due or invalid"));
+                        : reject(CreateError.Unauthorized('refreshToken is due or invalid'));
                 });
             });
         });

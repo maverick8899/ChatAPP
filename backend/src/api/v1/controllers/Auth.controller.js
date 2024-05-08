@@ -224,7 +224,7 @@ module.exports = {
         }
     },
     getLists: (req, res, next) => {
-        const list = [{ data1: 'data1' }, { data2: 'data2' }];
+        const list = { quantity: 2, data: [{ data1: 'data1' }, { data2: 'data2' }] };
         res.status(200).json({ list });
     },
     //Dùng cho Axios có auth ở headers

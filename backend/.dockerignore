@@ -1,5 +1,4 @@
 node_modules
 Dockerfile
-.dockerignore
 .env
-#aa
+public/api/v1/images/*
