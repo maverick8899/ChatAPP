@@ -35,11 +35,10 @@
         "socket.io": "^4.7.2",
         "swagger-jsdoc": "^6.0.1",
         "swagger-ui-express": "^4.1.6",
-        "winston": "^3.9.0"
-    },
-    "devDependencies": {
+        "winston": "^3.9.0",
         "date-fns": "^2.30.0",
         "node-sass": "^8.0.0",
         "uuid": "^9.0.0"
-    }
+    },
+    "devDependencies": {}
 }

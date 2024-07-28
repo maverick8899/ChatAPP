@@ -8,6 +8,7 @@ const server = app.listen(process.env.PORT, function () {
 
 let allowedOrigins = '*';
 if (process.env.NODE_ENV === 'staging') {
+    console.log('✅✅✅✅✅✅ MOUNTING IS SUCCESSFUL ✅✅✅✅✅✅'.green.bold);
     console.log('socket', process.env.ALLOWED_ORIGINS);
     //? watching log throw out in browser to add into allowedOrigins list
     // const allowedOrigins = ['http://wsl.local:3000'];

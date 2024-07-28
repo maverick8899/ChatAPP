@@ -100,7 +100,7 @@ module.exports = {
                 otp,
                 email,
             });
-            console.log('Auth.controller.verifyOTP'.blue, {
+            console.log('AuthController.verifyOTP'.blue, {
                 code,
                 message,
             });
@@ -157,12 +157,9 @@ module.exports = {
             if (!isMatch) {
                 throw CreateError.Unauthorized();
             }
-
-            //? Create Tokens
             const accessToken = await JWT.signAccessToken(user._id);
             const refreshToken = await JWT.signRefreshToken(user._id);
             console.log('AuthController.login'.blue, { accessToken, refreshToken });
-
             //? set tokens into cookie
             // setAccessTokenCookie(res, accessToken);
             // setRefreshTokenCookie(res, refreshToken);
@@ -216,7 +213,7 @@ module.exports = {
 
                 res.clearCookie('AT');
                 res.clearCookie('RT');
-                console.log('LOGOUT IS SUCCESSFUL'.brightYellow);
+                console.log('LOG OUT IS SUCCESSFUL'.brightYellow);
                 res.status(200).json({ success: true, message: 'logout success!' });
             });
         } catch (error) {
@@ -224,7 +221,10 @@ module.exports = {
         }
     },
     getLists: (req, res, next) => {
-        const list = { quantity: 2, data: [{ data1: 'data1' }, { data2: 'data2' }] };
+        const list = {
+            quantity: 3,
+            data: [{ data1: 'data1' }, { data2: 'data2' }, { data3: 'data3' }],
+        };
         res.status(200).json({ list });
     },
     //Dùng cho Axios có auth ở headers

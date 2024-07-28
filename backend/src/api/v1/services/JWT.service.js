@@ -13,6 +13,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             JWT.sign({ userId }, process.env.ACCESS_TOKEN, options, (err, token) => {
                 err && reject(err);
+                console.log('signAccessToken', token);
                 resolve(token);
             });
         });
@@ -53,8 +54,11 @@ module.exports = {
                         365 * 24 * 60 * 60,
                         (err, reply) => {
                             if (err) {
-                                reject(CreateError.InternalServerError());
+                                reject(CreateError.InternalServerError('Redis - signRefreshToken'));
                             }
+                            console.log('signRefreshToken', { reply });
+                            console.log('signRefreshToken', token);
+
                             resolve(token);
                         },
                     );

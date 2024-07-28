@@ -3,28 +3,32 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const { connectChatAPP } = require('../../../configs/connections_mongDB');
 
-const UserSchema = new Schema({
-    name: { type: 'string', required: false },
-    email: { type: String, lowercase: true, unique: true, require: true },
-    password: { type: String, require: true },
-    picture: {
-        type: 'String',
-        default:
-            'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg',
+const UserSchema = new Schema(
+    {
+        name: { type: 'string', required: false },
+        email: { type: String, lowercase: true, unique: true, require: true },
+        password: { type: String, require: true },
+        picture: {
+            type: 'String',
+            default:
+                'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg',
+        },
+        role: { type: String, enum: ['user', 'manager', 'admin'], default: 'user' },
+        // Trạng thái đăng ký
+        registrationStatus: {
+            type: String,
+            enum: ['pending', 'completed'], // Giá trị có thể là 'pending' hoặc 'completed'
+            default: 'pending', // Trạng thái mặc định là 'pending'
+        },
     },
-    role: { type: String, enum: ['user', 'manager', 'admin'], default: 'user' },
-    // Trạng thái đăng ký
-    registrationStatus: {
-        type: String,
-        enum: ['pending', 'completed'], // Giá trị có thể là 'pending' hoặc 'completed'
-        default: 'pending', // Trạng thái mặc định là 'pending'
-    },
-});
-//? Các giá trị 1 ở đây đại diện cho thứ tự sắp xếp tăng dần của các giá trị trong index.
+    { timestamps: true },
+);
+
+//? Create index: chỉ mục sẽ được tạo dựa trên trường registrationStatus
 //? registrationStatus: 'pending' sẽ được xóa sau expireAfterSeconds
 UserSchema.index(
-    { registrationStatus: 1, createdAt: 1 },
-    { expireAfterSeconds: 300, partialFilterExpression: { registrationStatus: 'pending' } },
+    { registrationStatus: 1 },
+    { expireAfterSeconds: 5, partialFilterExpression: { registrationStatus: 'pending' } },
 );
 
 //encode before save

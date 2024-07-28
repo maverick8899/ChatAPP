@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name: 'my_app',
+            name: 'chatapp',
             script: 'npm',
             args: 'start',
             time: true, //? show time_log

@@ -16,7 +16,7 @@ router
         // res.render('register', { layout: 'main' });
         res.json('hey guys');
     })
-    .post(limitRequest(2), authController.register);
+    .post(limitRequest(10), authController.register);
 
 router.route('/verifyOTP').post(authController.verifyOTP);
 router.post(
