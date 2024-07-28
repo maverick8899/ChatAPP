@@ -1,0 +1,18 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+    name: traefik-igr
+    namespace: default
+spec:
+    entryPoints:
+        - websecure
+    tls:
+        certResolver: letsencrypt
+    routes:
+        - match: Host(`app.devops.online`)  
+          kind: Rule
+          services:
+              - name: frontend
+                port: 80  
+ 

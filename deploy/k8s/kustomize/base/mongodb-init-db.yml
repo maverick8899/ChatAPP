@@ -1,0 +1,104 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: mongodb-init-script
+    namespace: default
+data:
+    init-script.sh: | 
+        #!/bin/sh  
+        echo "🔥🔥🔥🔥🔥🔥🔥🔥🔥INIT DATABASE🔥🔥🔥🔥🔥🔥🔥🔥🔥"
+        MONGO_HOST="localhost"  
+        MONGO_PORT="27017"
+        MONGO_INITDB_ROOT_USERNAME="root"
+        MONGO_INITDB_ROOT_PASSWORD="Root2003"
+        DB_NAME="ChatAPP"
+        DB_USER="chat"
+        DB_PASSWORD="toisethanhcong08092003" 
+
+        echo "🔥🔥🔥🔥🔥🔥🔥🔥🔥CHECK ENV🔥🔥🔥🔥🔥🔥🔥🔥🔥"
+        echo "MONGO_HOST=${MONGO_HOST}"
+        echo "MONGO_PORT=${MONGO_PORT}"
+        echo "MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}"
+        echo "MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}"
+        echo "DB_NAME=${DB_NAME}"
+        echo "DB_USER=${DB_USER}"
+        echo "DB_PASSWORD=${DB_PASSWORD}"
+
+
+         #@ Check user.chat is existing
+        existing_user=$(mongosh ${DB_NAME} \
+          --host ${MONGO_HOST} \
+          --port ${MONGO_PORT} \
+          -u ${MONGO_INITDB_ROOT_USERNAME} \
+          -p ${MONGO_INITDB_ROOT_PASSWORD} \
+          --authenticationDatabase admin \
+          --eval "db.getUser('${DB_USER}')")
+
+        #@ If existing, create
+        if [ -z "$existing_user" ] || [ "$existing_user" == "null" ]; then
+          echo "😅😅😅😅😅😅  User '${DB_USER}' does not exist. Creating user... 📝📝📝📝📝📝 "
+
+          mongosh ${DB_NAME} \
+            --host ${MONGO_HOST} \
+            --port ${MONGO_PORT} \
+            -u ${MONGO_INITDB_ROOT_USERNAME} \
+            -p ${MONGO_INITDB_ROOT_PASSWORD} \
+            --authenticationDatabase admin \
+            --eval "db.createUser({user: '${DB_USER}', pwd: '${DB_PASSWORD}', roles:[{role:'dbOwner', db: '${DB_NAME}'}]});"
+
+        #@ If not existing, skip
+          echo "🚀🚀🚀 User '${DB_USER}' created successfully! 🚀🚀🚀"
+        else
+            echo "👌👌👌 User '${DB_USER}' already exists. Skipping creation. 👌👌👌"
+        fi
+
+        #@ import data into db.ChatAPP.users
+        echo "📝📝📝📝📝📝 Insert data to ${DB_NAME}.users 📝📝📝📝📝📝"
+        mongoimport --db ${DB_NAME} --collection users --file /docker-entrypoint-initdb.d/ChatAPP.users.json --jsonArray -u ${DB_USER} -p ${DB_PASSWORD} --authenticationDatabase ${DB_NAME}
+
+    ChatAPP.users.json: |
+        [{
+          "_id": {
+            "$oid": "64733c00d0cc9cdde870524f"
+          },
+          "name": "kimbang",
+          "email": "trankimbang0809@gmail.com",
+          "password": "$2b$10$vCQcdi9c/5E2AMa9Y4TXmOwUj/594Cdm29hkW7.ZbZvfrtUl9En5C",
+          "picture": "https://res.cloudinary.com/dgiozc0lj/image/upload/v1688391752/64a22b4a1c6b8_vi38ob.png",
+          "role": "user",
+          "__v": 0
+        },
+        {
+          "_id": {
+            "$oid": "64733c17d0cc9cdde8705252"
+          },
+          "name": "Anonymous",
+          "email": "anonymous1010@gmail.com",
+          "password": "$2b$10$TvGoj3qzpvN7gqD1ZL.rIeI7zex7TYMmCxtvd5TXi2dMcAYNr6YAO",
+          "picture": "https://res.cloudinary.com/dgiozc0lj/image/upload/v1688391751/6496eea1542cd_rk2map.png",
+          "role": "user",
+          "__v": 0
+        },
+        {
+          "_id": {
+            "$oid": "64ce4ca6fe0d2d38b2dd8758"
+          },
+          "name": "maverick",
+          "email": "maverick@gmail.com",
+          "password": "$2b$10$TvGoj3qzpvN7gqD1ZL.rIeI7zex7TYMmCxtvd5TXi2dMcAYNr6YAO",
+          "picture": "https://res.cloudinary.com/dgiozc0lj/image/upload/v1688391752/64a22b9f694af_vg0siy.png",
+          "role": "user",
+          "__v": 0
+        },
+        {
+          "_id": {
+            "$oid": "66120dfc89c2fe1ab140fb60"
+          },
+          "name": "demo",
+          "email": "2151050035bang@ou.edu.vn",
+          "password": "$2b$10$Zzdx7Pohf0De/BsnKf4HKe5YVtKFYPbKY603Xplv88NXdimfHa3AG",
+          "picture": "http://res.cloudinary.com/dgiozc0lj/image/upload/v1712459256/kxsybr3cql6gbusyv3x9.jpg",
+          "role": "user",
+          "registrationStatus": "completed",
+          "__v": 0
+        }]

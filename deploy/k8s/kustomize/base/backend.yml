@@ -1,0 +1,160 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: chatapp-secrets
+type: Opaque
+data:
+    PORT: ODA4MA==
+    ALLOWED_ORIGINS: aHR0cDovL3dzbC5sb2NhbDozMDAwLGh0dHA6Ly9mcm9udGVuZCxodHRwOi8vbG9jYWxob3N0OjMwMDAsaHR0cDovLzUyLjIyMS4yNTIuMjQ3OjMwMDA=
+    NODE_ENV: c3RhZ2luZw==
+    #/ mongodb://chat:toisethanhcong08092003@mongo-mongodb-sharded:27017/ChatAPP?authSource=ChatAPP&w=1
+    # URI_MONGODB_CHATAPP: bW9uZ29kYjovL2NoYXQ6dG9pc2V0aGFuaGNvbmcwODA5MjAwM0Btb25nby1tb25nb2RiLXNoYXJkZWQ6MjcwMTcvQ2hhdEFQUD9hdXRoU291cmNlPUNoYXRBUFAmdz0x
+    #/ mongodb://chat:toisethanhcong08092003@mongo-mongodb-sharded-headless:27017/ChatAPP?authSource=ChatAPP&w=1
+    URI_MONGODB_CHATAPP: bW9uZ29kYjovL2NoYXQ6dG9pc2V0aGFuaGNvbmcwODA5MjAwM0Btb25nby1tb25nb2RiLXNoYXJkZWQtaGVhZGxlc3M6MjcwMTcvQ2hhdEFQUD9hdXRoU291cmNlPUNoYXRBUFAmdz0xCg==
+    ACCESS_TOKEN: NGYwMjMwMWU3ZDA5YTFkZjE3YmQ3Njg3YzQ0NDBhMmNhMTdhZTcxMjFjYmZmZmM3ZmY0MDkzNDRmOGE0MDg4YQ==
+    REFRESH_TOKEN: MWMyNDUxYmJjMDgyNjYxMjU2NGM1MWI0MWM3Y2IwMTk1YTBmZDZkNmFhZjBlYTUwMWZhZGQ3MjY2ODMxMWY2OA==
+    KEY_SECRET_COOKIE: YWI4ZTBiNWY1ZTkzMDBlNDYyOGQwM2JjMmE5ZjcyN2NlNGJmZjgwOWYxMTk4MTBlYmEzODMzZDQyOTIzODExMg==
+    KEY_PUBLIC: NmE1YTEyYzgwZDI1ZDIwN2M3OTFkNzU2YTNjMTM0YTIzMzViZWVlYzAzYTBiYjJkYWQwMWZlZTA1N2UyYTQ3Yg==
+    EMAIL_CLIENT_ID: ODg4MjIzMzAyMjExLXBlZTFqdnVqZHFtMTIwZW5vMjYxc25yMnByZHIwazRuLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29t
+    EMAIL_CLIENT_SECRET: R09DU1BYLVFTQlBVSHlsRzViLUQxSzVrR2Jna2hhLWx5WjI=
+    EMAIL_REDIRECT_URI: aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vb2F1dGhwbGF5Z3JvdW5k
+    EMAIL_REFRESH_TOKEN: MS8vMDRjTU92TXFoYVdWbUNnWUlBUkFBR0FTTndGLUw5SXJ3U1RDVTNXNWFERVJxenRlUDIyMS1JZXJNVHdCblp3dHdJTnhUdjEzMlhYSUFHVThjUUtwcFVsakJSV1RWRVpnX1Jn
+    #/ redis-redis-cluster
+    REDIS_HOST: cmVkaXMtcmVkaXMtY2x1c3Rlcg==
+    REDIS_PORT: NjM3OQ==
+    REDIS_PWD: Um9vdDIwMDM=
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: backend
+    labels:
+        app: be
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: be
+    template:
+        metadata:
+            labels:
+                app: be
+        spec:
+            containers:
+                - name: chatapp-backend
+                  image: maverick0809/chatapp-backend
+                  ports:
+                      - containerPort: 8080
+                  livenessProbe:
+                      httpGet:
+                          path: /
+                          port: 8080
+                      periodSeconds: 10
+                      initialDelaySeconds: 30
+                      timeoutSeconds: 10
+                      failureThreshold: 5
+                  readinessProbe:
+                      httpGet:
+                          path: /
+                          port: 8080
+                      periodSeconds: 10
+                      initialDelaySeconds: 30
+                      timeoutSeconds: 10
+                      failureThreshold: 5
+                  resources:
+                      limits:
+                          cpu: '500m'
+                          memory: '512Mi'
+                      requests:
+                          cpu: '250m'
+                          memory: '256Mi'
+                  env:
+                      - name: PORT
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: PORT
+                      - name: ALLOWED_ORIGINS
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: ALLOWED_ORIGINS
+                      - name: REDIS_HOST
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: REDIS_HOST
+                      - name: REDIS_PORT
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: REDIS_PORT
+                      - name: REDIS_PWD
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: REDIS_PWD
+                      - name: NODE_ENV
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: NODE_ENV
+                      - name: URI_MONGODB_CHATAPP
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: URI_MONGODB_CHATAPP
+                      - name: ACCESS_TOKEN
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: ACCESS_TOKEN
+                      - name: REFRESH_TOKEN
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: REFRESH_TOKEN
+                      - name: KEY_SECRET_COOKIE
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: KEY_SECRET_COOKIE
+                      - name: KEY_PUBLIC
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: KEY_PUBLIC
+                      - name: EMAIL_CLIENT_ID
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: EMAIL_CLIENT_ID
+                      - name: EMAIL_CLIENT_SECRET
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: EMAIL_CLIENT_SECRET
+                      - name: EMAIL_REDIRECT_URI
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: EMAIL_REDIRECT_URI
+                      - name: EMAIL_REFRESH_TOKEN
+                        valueFrom:
+                            secretKeyRef:
+                                name: chatapp-secrets
+                                key: EMAIL_REFRESH_TOKEN
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: backend
+spec:
+    selector:
+        app: be
+    ports:
+        - protocol: TCP
+          port: 8080
+          targetPort: 8080
