@@ -16,11 +16,13 @@
     <img src="https://img.shields.io/badge/rancher-%230075A8.svg?style=for-the-badge&logo=rancher&logoColor=white" alt="traefik"> 
 </p>   
 <h2>Automation Technologies</h2>
+<p> 
 <img src="https://img.shields.io/badge/Terraform-844FBA?logo=terraform&logoColor=fff&style=for-the-badge" alt="Terraform">
     <img src="https://img.shields.io/badge/Ansible-E00?logo=ansible&logoColor=fff&style=for-the-badge" alt="Ansible">
     <img src="https://img.shields.io/badge/Vagrant-1868F2?logo=vagrant&logoColor=fff&style=for-the-badge" alt="Vagrant">
     <img src="https://img.shields.io/badge/Jenkins-D24939?logo=jenkins&logoColor=fff&style=for-the-badge" alt="Jenkins">
     <img src="https://img.shields.io/badge/GitLab-FC6D26?logo=gitlab&logoColor=fff&style=for-the-badge" alt="GitLab">
+    </p>   
     
 ## Table of contents 
 * 💻 [Interface](#Interface) 
