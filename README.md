@@ -45,9 +45,16 @@
     <img src="https://res.cloudinary.com/dgiozc0lj/image/upload/v1722187085/lfjsx5pjwzvyk0w4ss8b.jpg" width="100%" alt="helm">
 </p>
 
-## 🛠️Prerequisites
-- To run this project, ensure that your computer has a multi-core processor (8 cores or more), at least 24 GB of RAM, and 100 GB of SSD storage.
-
+## 🛠️Prerequisites 
+- Make sure your machine has Docker installed
+## 🚀Getting Started
+After installing Docker, run the following commands to start experiencing this project
+```shell
+git clone https://github.com/maverick8899/ChatAPP
+cd deploy/docker
+docker compose up 
+```
+Enjoy! 
 
 ## 📧 Contact
 <p>Don't hesitate to contact me if you have any confusion or questions.</p>
