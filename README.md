@@ -9,17 +9,19 @@
 </p> 
 <h2>Deployment Technologies</h2>
 <p> 
+     <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="docker"> 
+    <img src="https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=fff&style=for-the-badge" alt="kubenetes">
+    <img src="https://img.shields.io/badge/Helm-0F1689?logo=helm&logoColor=fff&style=for-the-badge" alt="helm">
+        <img src="https://img.shields.io/badge/Harbor-60B932?logo=harbor&logoColor=fff&style=for-the-badge" alt="Harbor"> 
+    <img src="https://img.shields.io/badge/rancher-%230075A8.svg?style=for-the-badge&logo=rancher&logoColor=white" alt="traefik"> 
+</p>   
+<h2>Automation Technologies</h2>
+<img src="https://img.shields.io/badge/Terraform-844FBA?logo=terraform&logoColor=fff&style=for-the-badge" alt="Terraform">
     <img src="https://img.shields.io/badge/Ansible-E00?logo=ansible&logoColor=fff&style=for-the-badge" alt="Ansible">
     <img src="https://img.shields.io/badge/Vagrant-1868F2?logo=vagrant&logoColor=fff&style=for-the-badge" alt="Vagrant">
     <img src="https://img.shields.io/badge/Jenkins-D24939?logo=jenkins&logoColor=fff&style=for-the-badge" alt="Jenkins">
     <img src="https://img.shields.io/badge/GitLab-FC6D26?logo=gitlab&logoColor=fff&style=for-the-badge" alt="GitLab">
-    <img src="https://img.shields.io/badge/Harbor-60B932?logo=harbor&logoColor=fff&style=for-the-badge" alt="Harbor"> 
-    <img src="https://img.shields.io/badge/rancher-%230075A8.svg?style=for-the-badge&logo=rancher&logoColor=white" alt="traefik"> 
-     <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="docker"> 
-    <img src="https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=fff&style=for-the-badge" alt="kubenetes">
-    <img src="https://img.shields.io/badge/Helm-0F1689?logo=helm&logoColor=fff&style=for-the-badge" alt="helm">
-</p>   
-
+    
 ## Table of contents 
 * 💻 [Interface](#Interface) 
 * 🛠️[Prerequisites](#prerequisites)
